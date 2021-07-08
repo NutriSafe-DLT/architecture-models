@@ -24,14 +24,12 @@ The supply chain depicted in Fig. Y starts with the milk farm. The milk farm han
      width="1000"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
-
+<p align="center">
 <img src="./pictures/architecture_interface_layers.png"
-     display= "block"
-     width="50%"
-     margin-left= "auto"
-     margin-right= "auto"
+     width="500"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
+</p>
 
 Reference to ICBC paper
 
