@@ -7,10 +7,14 @@
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /><space><space>
 
-<br>
-TBD
-<br>
-TBD
+
+### Architecture Layers
+
+<img src="./pictures/architecture_interface_layers.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /> 
+
+Reference to ICBC paper
 
 ### Channel Topology
 
@@ -27,15 +31,32 @@ TBD
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
 
-<br>
-
 #### MQTT API
+
+<img src="./pictures/mqtt_api.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /> 
+
+Reference to I4CS paper
+     
 
 ### The Meta Model
 
 ### Blockchain Operations Framework
 
 #### Blockchain Operations Categories
+
+<img src="./pictures/blockchain_operations_categories.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /> 
+
+Reference to DAPPS paper
+
+<img src="./pictures/onboarding_a_new_org.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /> 
+
+Reference to DAPPS paper
 
 #### Script Environment
 
