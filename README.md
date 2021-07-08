@@ -3,13 +3,13 @@
 ### Business Architecture
 <figure>
   <img src="./pictures/stakeholder_maps.png"
-     width="1000"
+     width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;"/>
   <figcaption>
-  Fig. X: General Stakeholder Map (left)
+  Fig. X: Stakeholder map for the cheese supply chain (left)
 
-  Fig. Y: Stakeholder Map for the supply chain case (right)
+  Fig. Y: Supply chain access to the blockchain (right)
   </figcaption>
 </figure>
 <p align="justify">
@@ -19,16 +19,34 @@ The supply chain depicted in Fig. Y starts with the milk farm. The milk farm han
 
 ### Architecture Layers
 
-
-<img src="./pictures/actors_IS_DLT.png"
-     width="1000"
+<figure>
+  <img src="./pictures/actors_IS_DLT.png"
+     width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
+  <figcaption>
+  Fig. X: Conceptual architecture of a DLT-based supply chain
+  </figcaption>
+</figure>
+
+<p align="justify">
+The conceptual architecture of a blockchain as infrastructure is depicted in Fig. X Actors have their information systems: ERP Systems, customer relationship management systems (CRM), herd management systems (HMS), and systems used by logistics service providers to manage transportation.
+<br>
+Note that the depicted supply chain is quite linear. In reality, there are many farmers, logistics service providers, production facilities, wholesalers, and retailers that participate in a supply chain. An analysis of the scenarios resulted in requirements and design decisions.
+</p>
+
+
 <p align="center">
+<figure>
 <img src="./pictures/architecture_interface_layers.png"
      width="500"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
+    <figcaption>
+     Fig. Y: The layered architecture to bridge between applications and blockchain network
+    </figcaption>
+</figure>
+
 </p>
 
 Reference to ICBC paper
@@ -36,7 +54,7 @@ Reference to ICBC paper
 ### Channel Topology
 
 <img src="./pictures/channel_topology.png"
-     width="1000"
+     width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
 
@@ -44,19 +62,19 @@ Reference to ICBC paper
 ### APIs
 
 #### REST API
-
+<p align="center">
 <img src="./pictures/rest_api_component_model.png"
      width="500"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
-
+</p>
 #### MQTT API
-
+<p align="center">
 <img src="./pictures/mqtt_api.png"
      width="500"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
-
+</p>
 Reference to I4CS paper
      
 
@@ -65,16 +83,17 @@ Reference to I4CS paper
 ### Blockchain Operations Framework
 
 #### Blockchain Operations Categories
-
+<p align="center">
 <img src="./pictures/blockchain_operations_categories.png"
      width="500"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
+</p>
 
 Reference to DAPPS paper
 
 <img src="./pictures/onboarding_a_new_org.png"
-     width="1000"
+     width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
 
