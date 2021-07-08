@@ -25,19 +25,18 @@ The supply chain depicted in Fig. Y starts with the milk farm. The milk farm han
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
   <figcaption>
-  Fig. X: Conceptual architecture of a DLT-based supply chain
+  Fig. X: Conceptual architecture of a DLT-based supply chain <br>
   </figcaption>
 </figure>
-
 <p align="justify">
 The conceptual architecture of a blockchain as infrastructure is depicted in Fig. X Actors have their information systems: ERP Systems, customer relationship management systems (CRM), herd management systems (HMS), and systems used by logistics service providers to manage transportation.
 <br>
 Note that the depicted supply chain is quite linear. In reality, there are many farmers, logistics service providers, production facilities, wholesalers, and retailers that participate in a supply chain. An analysis of the scenarios resulted in requirements and design decisions.
 </p>
 
-<figure align="center">
+<figure float="right">
 <img src="./pictures/architecture_interface_layers.png"
-     width="500"
+     width="75%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
     <figcaption>
@@ -45,8 +44,18 @@ Note that the depicted supply chain is quite linear. In reality, there are many 
     </figcaption>
 </figure>
 
-Reference to ICBC paper
-
+Reference to ICBC/I4CS paper
+<p align="justify">
+The technical architecture is structured in four layers, as depicted in Fig. Y. The top "UI Layer" is populated by user-facing applications and enterprise applications. The applications enable end-users to store and access data in the blockchain.
+<br>
+The UI Layer contains the WebApp dashboard, an IOS application designed to enable mobile access and information provision to the blockchain state. The web application and the IOS app use JSON over HTTP to send REST-Calls to the NutriSafe REST API.
+<br>
+The API layer builds a layer of abstraction to the underlying system. The REST API and the EDI API provide the connectivity of user faced applications and the blockchain infrastructure. In small and medium-sized enterprises, EDI is a common standard for communication with business partners. REST is the de-facto standard for web-interfaces. We propose an EDI API which enables accessibility by enterprise applications.
+The third layer is the "Persistence Layer" with the blockchain ledger and a shared user database. The shared user database enables the authenticity of users or systems for all APIs. The web application provides user management with an interface for adding, deleting, and changing user details and rights to invoke chaincode. 
+<br>
+Note that the current implementation uses whitelisting to define rights for function calls. Hyperledger Fabric in the 2.2 LTS version is used as the technical platform for the blockchain.<br>
+The fourth layer contains the operational support and necessities for configuring and maintaining a Hyperledger Fabric network. The designed scripts for creating update transactions enable a fast way to expand the network. Configuration files are inherent by the blockchain framework and are customized for our scenario.
+</p>
 ### APIs
 
 #### REST API
