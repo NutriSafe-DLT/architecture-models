@@ -26,7 +26,10 @@ The supply chain depicted in Fig. Y starts with the milk farm. The milk farm han
      style="float: left; margin-right: 10px;" /> 
 
 <img src="./pictures/architecture_interface_layers.png"
-     width="500"
+     display= "block"
+     width="50%"
+     margin-left= "auto"
+     margin-right= "auto"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
 
