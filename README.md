@@ -35,9 +35,7 @@ The conceptual architecture of a blockchain as infrastructure is depicted in Fig
 Note that the depicted supply chain is quite linear. In reality, there are many farmers, logistics service providers, production facilities, wholesalers, and retailers that participate in a supply chain. An analysis of the scenarios resulted in requirements and design decisions.
 </p>
 
-
-<p align="center">
-<figure>
+<figure align="center">
 <img src="./pictures/architecture_interface_layers.png"
      width="500"
      alt="Markdown Monster icon"
@@ -47,17 +45,7 @@ Note that the depicted supply chain is quite linear. In reality, there are many 
     </figcaption>
 </figure>
 
-</p>
-
 Reference to ICBC paper
-
-### Channel Topology
-
-<img src="./pictures/channel_topology.png"
-     width="100%"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" /> 
-
 
 ### APIs
 
@@ -79,6 +67,14 @@ Reference to I4CS paper
      
 
 ### The Meta Model
+
+### Channel Topology
+
+<img src="./pictures/channel_topology.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /> 
+
 
 ### Blockchain Operations Framework
 
