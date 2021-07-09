@@ -122,10 +122,28 @@ The RESTful interface (cf. Fig. X) provides a set of functions to enable the int
 #### Script Environment
 
 ##### The Documentation Model
+<p align="justify">
+The documentation model consists of the following fields: <br>
+<b>Name:</b>
+<br>
+<b>Goal:</b>
+<br>
+<b>Skript Parameter:</b>
+<br>
+<b>Environmental Prerequisites:</b>
+<br>
+<b>Required Files:</b>
+<br>
+<b>Output File and/or Result State:</b>
+</p>
+<img src="./pictures/empty_script.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
 
 ##### create_crypto_peer_organisation.sh
 
-<img src="./pictures/create_crypto_peer_Organisation.png"
+<img src="./pictures/create_crypto_peer_organisation.png"
      width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
@@ -160,12 +178,42 @@ The RESTful interface (cf. Fig. X) provides a set of functions to enable the int
 
 ##### create_peer.sh
 
+<img src="./pictures/create_peer.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
 ##### create_channel.sh
+
+<img src="./pictures/create_channel.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
 
 ##### peer_channel_join.sh
 
+<img src="./pictures/peer_channel_join.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
 ##### anchor_peer_update.sh
+
+<img src="./pictures/anchor_peer_update.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
 
 ##### org_join_channel.sh
 
+<img src="./pictures/org_join_channel.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
 ##### start_prometheus.sh
+
+<img src="./pictures/start_prometheus.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
