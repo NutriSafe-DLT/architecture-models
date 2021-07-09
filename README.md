@@ -121,25 +121,28 @@ The RESTful interface (cf. Fig. X) provides a set of functions to enable the int
 
 #### Script Environment
 
+The Hyperledger Fabric framework provides a set of scripts for basic network management operations by default. A toolchain for the generation, configuration, and administration of fabric-based networks is realized using the Hyperledger Fabric framework's client software. However, most of the administrative operations require long sequences of commands executed in a strict order. Scripting those operations is fundamental for efficient network deployment and operation. Therefor, we elaborated a compact sheet for documenting these scripts and all its environmental dependencies and implications.
+
 ##### The Documentation Model
-<p align="justify">
-The documentation model consists of the following fields: <br>
-<b>Name:</b>
-<br>
-<b>Goal:</b>
-<br>
-<b>Skript Parameter:</b>
-<br>
-<b>Environmental Prerequisites:</b>
-<br>
-<b>Required Files:</b>
-<br>
-<b>Output File and/or Result State:</b>
-</p>
+
 <img src="./pictures/empty_script.png"
      width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
+<p align="justify">
+The documentation model consists of the following fields. <br>
+<b>Name:</b> The name of the script file.
+<br>
+<b>Goal:</b> The desired goal by starting the script.
+<br>
+<b>Skript Parameter:</b> The parameters inside the script and the default value.
+<br>
+<b>Environmental Prerequisites:</b> Prerequisites, such as locally running processes or the presence of specific network entities.
+<br>
+<b>Required Files:</b> The presence of required files, such as certs, in the filesystem.
+<br>
+<b>Output File and/or Result State:</b> The result of the script operation, can be a output file oder the change of a state for a specific network entity.
+</p>
 
 ##### create_crypto_peer_organisation.sh
 
