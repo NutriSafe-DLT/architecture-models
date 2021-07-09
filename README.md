@@ -36,42 +36,41 @@ The conceptual architecture of a blockchain as infrastructure is depicted in Fig
 Note that the depicted supply chain is quite linear. In reality, there are many farmers, logistics service providers, production facilities, wholesalers, and retailers that participate in a supply chain. An analysis of the scenarios resulted in requirements and design decisions.
 </p>
 
-<figure float="right">
+<p align="center">
 <img src="./pictures/architecture_interface_layers.png"
      width="75%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
-    <figcaption>
+     <br>
      Fig. Y: The layered architecture to bridge between applications and blockchain network
-    </figcaption>
-</figure>
+
+</p>
 
 <i>Reference to ICBC/I4CS paper</i>
 <p align="justify">
-The technical architecture is structured in four layers, as depicted in Fig. Y. The top "UI Layer" is populated by user-facing applications and enterprise applications. The applications enable end-users to store and access data in the blockchain.
+The technical architecture is structured in four layers, as depicted in Fig. Y. 
 <br>
-The UI Layer contains the WebApp dashboard, an IOS application designed to enable mobile access and information provision to the blockchain state. The web application and the IOS app use JSON over HTTP to send REST-Calls to the NutriSafe REST API.
+<b>The UI Layer</b> contains the WebApp dashboard, an IOS application designed to enable mobile access and information provision to the blockchain state. The web application and the IOS app use JSON over HTTP to send REST-Calls to the NutriSafe REST API.
 <br>
-The API layer builds a layer of abstraction to the underlying system. The REST API and the EDI API provide the connectivity of user faced applications and the blockchain infrastructure. In small and medium-sized enterprises, EDI is a common standard for communication with business partners. REST is the de-facto standard for web-interfaces. We propose an EDI API which enables accessibility by enterprise applications.
-The third layer is the "Persistence Layer" with the blockchain ledger and a shared user database. The shared user database enables the authenticity of users or systems for all APIs. The web application provides user management with an interface for adding, deleting, and changing user details and rights to invoke chaincode. 
+<b>The API Layer</b> builds a layer of abstraction to the underlying system. The REST API and the EDI API provide the connectivity of user faced applications and the blockchain infrastructure. In small and medium-sized enterprises, EDI is a common standard for communication with business partners. REST is the de-facto standard for web-interfaces. We propose an EDI API which enables accessibility by enterprise applications.
 <br>
-Note that the current implementation uses whitelisting to define rights for function calls. Hyperledger Fabric in the 2.2 LTS version is used as the technical platform for the blockchain.<br>
-The fourth layer contains the operational support and necessities for configuring and maintaining a Hyperledger Fabric network. The designed scripts for creating update transactions enable a fast way to expand the network. Configuration files are inherent by the blockchain framework and are customized for our scenario.
+<b>The Persistence Layer</b> with the blockchain ledger and a shared user database. The shared user database enables the authenticity of users or systems for all APIs. The web application provides user management with an interface for adding, deleting, and changing user details and rights to invoke chaincode. 
+<br>
+<b>The Administration Layer</b> contains the operational support and necessities for configuring and maintaining a Hyperledger Fabric network. The designed scripts for creating update transactions enable a fast way to expand the network. Configuration files are inherent by the blockchain framework and are customized for our scenario.
 </p>
 
 ### APIs
 
 #### REST API
+
 <p align="center">
-<figure float="right">
 <img src="./pictures/rest_api_component_model.png"
      width="500"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
-         <figcaption>
-     Fig. Y: The component model of the REST API
-    </figcaption>
-    </figure>
+  
+  <br>
+    Fig. Y: The component model of the REST API
 </p>
 
 <p align="justify">
@@ -122,4 +121,51 @@ The RESTful interface (cf. Fig. X) provides a set of functions to enable the int
 
 #### Script Environment
 
+##### The Documentation Model
 
+##### create_crypto_peer_organisation.sh
+
+<img src="./pictures/create_crypto_peer_Organisation.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
+##### initialize_ordering_service.sh
+
+<img src="./pictures/initialize_ordering_service.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
+##### start_cli.sh
+
+<img src="./pictures/start_cli.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
+##### create_consortium.sh
+
+<img src="./pictures/create_consortium.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
+##### org_join_consortium.sh
+
+<img src="./pictures/org_join_consortium.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
+##### create_peer.sh
+
+##### create_channel.sh
+
+##### peer_channel_join.sh
+
+##### anchor_peer_update.sh
+
+##### org_join_channel.sh
+
+##### start_prometheus.sh
