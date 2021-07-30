@@ -2,35 +2,37 @@
 
 ### Business Architecture
 
+<p align="justify">
+The community uses a stakeholder map shown in Fig. 1 and the NutriSafe infrastructure as the central element of the design. The community comprises many actors typical for any food supply chain and actors specific for the scenario of soft cheese production, namely dairy and milk truck.
+</p><br>
 <p align="center">
      <img src="./pictures/stakeholder_maps.png"
-     width="75%"
+     width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
      <br>
-      Fig. X: Stakeholder map for the cheese supply chain (left)
+      Fig. 1: Stakeholder map for the cheese supply chain (left)
      <br>
-     Fig. Y: Supply chain access to the blockchain (right)
+     Fig. 2: Supply chain access to the blockchain (right)
 </p>
 
 <i>
 <b>Source:</b> Lamken, D., Wagner, T., Hoiss, T., Seidenfad., K., Hermann, A., Kus, M., & Lechner, U. (n.d.). Design patterns and framework for blockchain integration in supply chains. 2021 IEEE International Conference on Blockchain and Cryptocurrency (ICBC) 
-</i><br>
+</i><br><br>
 
 <p align="justify">
-The community uses a stakeholder map shown in Fig. X and the NutriSafe infrastructure as the central element of the design. The community comprises many actors typical for any food supply chain and actors specific for the scenario of soft cheese production, namely dairy and milk truck. <br>
-The supply chain depicted in Fig. Y starts with the milk farm. The milk farm hands over the fresh milk to a milk truck, which transports milk to the dairy and takes a sample for quality checks. The dairy processes fresh milk to produce, e.g., soft cheese transported by a logistics service provider to a retailer. The end customer buys the product, the soft cheese, at a grocery store. We assume that all actors use the blockchain to share information concerning production and logistics. A core user story is the creation of traceable product history. The product history is, e.g., providing information to the end-customer or for efficient tracking and tracing in a food safety issue.
+The supply chain depicted in Fig. 2 starts with the milk farm. The milk farm hands over the fresh milk to a milk truck, which transports milk to the dairy and takes a sample for quality checks. The dairy processes fresh milk to produce, e.g., soft cheese transported by a logistics service provider to a retailer. The end customer buys the product, the soft cheese, at a grocery store. We assume that all actors use the blockchain to share information concerning production and logistics. A core user story is the creation of traceable product history. The product history is, e.g., providing information to the end-customer or for efficient tracking and tracing in a food safety issue.
 </p>
 
 ### Architecture Layers
 
 <p align="center">
 <img src="./pictures/actors_IS_DLT.png"
-     width="75%"
+     width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
      <br>
-    Fig. X: Conceptual architecture of a DLT-based supply chain 
+    Fig. 3: Conceptual architecture of a DLT-based supply chain 
 </p>
 
 <i>
@@ -39,7 +41,7 @@ The supply chain depicted in Fig. Y starts with the milk farm. The milk farm han
 
 <p align="justify">
 <br>
-The conceptual architecture of a blockchain as infrastructure is depicted in Fig. X Actors have their information systems: ERP Systems, customer relationship management systems (CRM), herd management systems (HMS), and systems used by logistics service providers to manage transportation.
+The conceptual architecture of a blockchain as infrastructure is depicted in Fig. 3 Actors have their information systems: ERP Systems, customer relationship management systems (CRM), herd management systems (HMS), and systems used by logistics service providers to manage transportation.
 <br>
 Note that the depicted supply chain is quite linear. In reality, there are many farmers, logistics service providers, production facilities, wholesalers, and retailers that participate in a supply chain. An analysis of the scenarios resulted in requirements and design decisions.
 </p>
@@ -50,14 +52,13 @@ Note that the depicted supply chain is quite linear. In reality, there are many 
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
      <br>
-     Fig. Y: The layered architecture to bridge between applications and blockchain network
-
+     Fig. 4: The layered architecture to bridge between applications and blockchain network
 </p>
 
 <i><b>Source:</b> Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.
 </i><br>
 <p align="justify">
-The technical architecture is structured in four layers, as depicted in Fig. Y. 
+The technical architecture is structured in four layers, as depicted in Fig. 4. 
 <br>
 <b>The UI Layer</b> contains the WebApp dashboard, an IOS application designed to enable mobile access and information provision to the blockchain state. The web application and the IOS app use JSON over HTTP to send REST-Calls to the NutriSafe REST API.
 <br>
@@ -79,19 +80,19 @@ The technical architecture is structured in four layers, as depicted in Fig. Y.
      style="float: left; margin-right: 10px;" /> 
   
   <br>
-    Fig. Y: The component model of the REST API
+    Fig. 5: The component model of the REST API
 </p>
 
 <p align="justify">
 The REST API provides the interface for all web applications to the blockchain. Note that the first design iteration of NutriSafe utilizes a REST API for each organization.
 <br>
-The RESTful interface (cf. Fig. X) provides a set of functions to enable the interaction with the NutriSafe Hyperledger Fabric network. To authenticate the transaction proposals to the blockchain network, the user's organization's certificate and the corresponding key have to be accessible for the REST API. Custom clients transfer username and password to receive a JSON Web Token (JWT) per session on the REST API. Since the REST API hosts its own user database, user management is also part of its feature set. Customizable whitelists define the function calls per user and are adjustable to chaincode updates.
+The RESTful interface (cf. Fig. 5) provides a set of functions to enable the interaction with the NutriSafe Hyperledger Fabric network. To authenticate the transaction proposals to the blockchain network, the user's organization's certificate and the corresponding key have to be accessible for the REST API. Custom clients transfer username and password to receive a JSON Web Token (JWT) per session on the REST API. Since the REST API hosts its own user database, user management is also part of its feature set. Customizable whitelists define the function calls per user and are adjustable to chaincode updates.
 </p>
 
 #### MQTT API
 
 <p align="justify">
-A setup with mechatronic components and an MES is depicted in Fig. Z. The MES is utilizing the REST API. The mechatronic components such as PLC and sensors are accessing our MQTT API, which consists of an MQTT broker and an MQTT-to-BC-Gateway. To increase interoperability, we propose all MQTT devices to be compliant with the Sparkplug B specification. <br>
+A setup with mechatronic components and an MES is depicted in Fig. 6. The MES is utilizing the REST API. The mechatronic components such as PLC and sensors are accessing our MQTT API, which consists of an MQTT broker and an MQTT-to-BC-Gateway. To increase interoperability, we propose all MQTT devices to be compliant with the Sparkplug B specification. <br>
 Since MQTT is offering a large flexibility for topic naming and payload encoding, this flexibility becomes a limitation when different organizations want to access dis- tributed data of a less known OT-environment. Sparkplug is a standardization project by the Eclipse Foundation and a recent approach to reach more interoperability in the IoT, by making MQTT data more reasonable. It contains specifications for semantic topic naming, session states and payload management.
 </p>
 <p align="center">
@@ -99,13 +100,15 @@ Since MQTT is offering a large flexibility for topic naming and payload encoding
      width="500"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
+     <br>
+     Fig. 6: Architecture example including a MQTT- and REST-API connecting automation levels four, two and one
 </p>
 <i><b>Source:</b> Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.
-</i><br>
+</i><br><br>
 
 <p align="justify">
-The concept shown in Fig. Z utilizes two generic structures (cf. Fig. 6 and Fig. 13) as follows: The MES is aware of the machines' running jobs and knows the Sparkplug compliant namespace of each involved device. Each time a new job is finished, the MES adds the namespace of the active machine to the product-lot as a new attribute. Since the new lot is timestamped and contains a unique namespace, we can now query the ledger of the production machine precisely by the tuple of topic-domain and timestamp. Each device has its own ledger, and each ledger can be concatenated from top to down. I.e., a machine has its own ledger, which is referring to the ledgers of its subcomponents.
-Our solution benefits from the combination of the generic structures of Sparkplug and the NutriSafe Meta Model. The flexible data model of NutriSafe (cf. Fig. 6) enables to address the full bandwidth of products in the food industry. Annotating predecessor and successor to each product-lot empowers, e.g., authorities to make a forward and backward tracing on the supply chain data. Within specific tracing cases, it is necessary to query data about the OT-environment which was involved in the production process. Here Sparkplug comes into play. The semantic granularity ranges from production lines, over single machines and down to components such as actuators or sensors. Furthermore, industrial environments are shaped by patchworks of modern and also historically grown legacy infrastructures. Here our current data model faces limitations because it does not offer a means to integrate these infrastructural data.
+The concept shown in Fig. 6 utilizes two generic structures (cf. Fig. XXX and Fig. XXX) as follows: The MES is aware of the machines' running jobs and knows the Sparkplug compliant namespace of each involved device. Each time a new job is finished, the MES adds the namespace of the active machine to the product-lot as a new attribute. Since the new lot is timestamped and contains a unique namespace, we can now query the ledger of the production machine precisely by the tuple of topic-domain and timestamp. Each device has its own ledger, and each ledger can be concatenated from top to down. I.e., a machine has its own ledger, which is referring to the ledgers of its subcomponents.
+Our solution benefits from the combination of the generic structures of Sparkplug and the NutriSafe Meta Model. The flexible data model of NutriSafe (cf. Fig. 7) enables to address the full bandwidth of products in the food industry. Annotating predecessor and successor to each product-lot empowers, e.g., authorities to make a forward and backward tracing on the supply chain data. Within specific tracing cases, it is necessary to query data about the OT-environment which was involved in the production process. Here Sparkplug comes into play. The semantic granularity ranges from production lines, over single machines and down to components such as actuators or sensors. Furthermore, industrial environments are shaped by patchworks of modern and also historically grown legacy infrastructures. Here our current data model faces limitations because it does not offer a means to integrate these infrastructural data.
 </p>
      
 
@@ -122,7 +125,7 @@ The meta definition allows to manage a large and diverse number of different pro
      style="float: left; margin-right: 10px;" /> 
   
   <br>
-    Fig. Y: The meta definition
+    Fig. 7: The meta definition
 </p>
 
 <i>
@@ -136,6 +139,8 @@ The meta definition allows to manage a large and diverse number of different pro
      width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
+     <br>
+     Fig. 8: The channel topology for the NutriSafe softcheese szenario
 </p>
 
 <i><b>Source:</b> Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.<i><br>
@@ -149,6 +154,8 @@ The meta definition allows to manage a large and diverse number of different pro
      width="500"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
+     <br>
+     Fig. 9: The blockchain operations categories
 </p>
 
 <i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
@@ -158,7 +165,8 @@ The meta definition allows to manage a large and diverse number of different pro
      width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
-
+<br>
+Fig. 10: The step-by-step process of onboarding a new organization with the corresponding blockchain operations categories
 <i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
 </i><br>
 
@@ -172,9 +180,12 @@ The Hyperledger Fabric framework provides a set of scripts for basic network man
      width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
-<p align="justify">
+
+Fig. 11: The template for documenting a new script operation, which was developed inside the NutriSafe project
 
 <i><b>Source:</b> Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.<i> <br>
+
+<p align="justify">
 
 The documentation model consists of the following fields. <br>
 <b>Name:</b> The name of the script file.
