@@ -98,7 +98,22 @@ Our solution benefits from the combination of the generic structures of Sparkplu
 </p>
      
 
-### The Meta Model
+### The Meta Definition
+<p align="justify">
+The meta definition represents a data set of diverse product specifications. It enables to extend a product model in a running blockchain, whereas the REST API offers an interface and identity handling for client applications that intend to connect to the Hyperledger Fabric network. 
+The meta definition allows to manage a large and diverse number of different product representations in the blockchain. The meta definition is saved as one key-value pair on the ledger with the key predefined as METADEF. The meta definition contains a unitList, describing possible unit metrics for products, an attributeToDataTypeMap, which maps datatypes to attributes and a productNameToAttributesMap, which connects a list of attributes to a product type.  
+</p>
+
+<p align="center">
+<img src="./pictures/meta_definition.png"
+     width="500"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /> 
+  
+  <br>
+    Fig. Y: The meta definition
+</p>
+
 
 ### Channel Topology
 
