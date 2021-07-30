@@ -14,9 +14,8 @@
 </p>
 
 <i>
-Source: Lamken, D., Wagner, T., Hoiss, T., Seidenfad., K., Hermann, A., Kus, M., & Lechner, U. (n.d.). Design patterns and framework for blockchain integration in supply chains. 2021 IEEE International Conference on Blockchain and Cryptocurrency (ICBC) 
-</i>
-
+<b>Source:</b> Lamken, D., Wagner, T., Hoiss, T., Seidenfad., K., Hermann, A., Kus, M., & Lechner, U. (n.d.). Design patterns and framework for blockchain integration in supply chains. 2021 IEEE International Conference on Blockchain and Cryptocurrency (ICBC) 
+</i><br>
 
 <p align="justify">
 The community uses a stakeholder map shown in Fig. X and the NutriSafe infrastructure as the central element of the design. The community comprises many actors typical for any food supply chain and actors specific for the scenario of soft cheese production, namely dairy and milk truck. <br>
@@ -35,8 +34,8 @@ The supply chain depicted in Fig. Y starts with the milk farm. The milk farm han
 </p>
 
 <i>
-Source: Hrestic, R., Hermann, A., Hofmeier, M., Hoiß, T., Seidenfad, K., & Lechner, U. (2020). Supply Chains Meet Fintech: Is Tokenization an Option? 3rd International FinTech, InsurTech & Blockchain Forum.
-</i>
+<b>Source:</b> Hrestic, R., Hermann, A., Hofmeier, M., Hoiß, T., Seidenfad, K., & Lechner, U. (2020). Supply Chains Meet Fintech: Is Tokenization an Option? 3rd International FinTech, InsurTech & Blockchain Forum.
+</i><br>
 
 <p align="justify">
 <br>
@@ -55,8 +54,8 @@ Note that the depicted supply chain is quite linear. In reality, there are many 
 
 </p>
 
-<i>Source: Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.
-</i>
+<i><b>Source:</b> Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.
+</i><br>
 <p align="justify">
 The technical architecture is structured in four layers, as depicted in Fig. Y. 
 <br>
@@ -101,8 +100,8 @@ Since MQTT is offering a large flexibility for topic naming and payload encoding
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
 </p>
-<i>Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.
-</i>
+<i><b>Source:</b> Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.
+</i><br>
 
 <p align="justify">
 The concept shown in Fig. Z utilizes two generic structures (cf. Fig. 6 and Fig. 13) as follows: The MES is aware of the machines' running jobs and knows the Sparkplug compliant namespace of each involved device. Each time a new job is finished, the MES adds the namespace of the active machine to the product-lot as a new attribute. Since the new lot is timestamped and contains a unique namespace, we can now query the ledger of the production machine precisely by the tuple of topic-domain and timestamp. Each device has its own ledger, and each ledger can be concatenated from top to down. I.e., a machine has its own ledger, which is referring to the ledgers of its subcomponents.
@@ -127,8 +126,8 @@ The meta definition allows to manage a large and diverse number of different pro
 </p>
 
 <i>
-Source: Lamken, D., Wagner, T., Hoiss, T., Seidenfad., K., Hermann, A., Kus, M., & Lechner, U. (n.d.). Design patterns and framework for blockchain integration in supply chains. 2021 IEEE International Conference on Blockchain and Cryptocurrency (ICBC) 
-</i>
+<b>Source:</b> Lamken, D., Wagner, T., Hoiss, T., Seidenfad., K., Hermann, A., Kus, M., & Lechner, U. (n.d.). Design patterns and framework for blockchain integration in supply chains. 2021 IEEE International Conference on Blockchain and Cryptocurrency (ICBC) 
+</i><br>
 
 
 ### Channel Topology
@@ -139,7 +138,7 @@ Source: Lamken, D., Wagner, T., Hoiss, T., Seidenfad., K., Hermann, A., Kus, M.,
      style="float: left; margin-right: 10px;" /> 
 </p>
 
-<i>Source: Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.<i>
+<i><b>Source:</b> Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.<i><br>
 
 
 ### Blockchain Operations Framework
@@ -152,16 +151,16 @@ Source: Lamken, D., Wagner, T., Hoiss, T., Seidenfad., K., Hermann, A., Kus, M.,
      style="float: left; margin-right: 10px;" /> 
 </p>
 
-<i>Source: Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
-</i>
+<i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
+</i><br>
 
 <img src="./pictures/onboarding_a_new_org.png"
      width="100%"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
 
-<i>Source: Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
-</i>
+<i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
+</i><br>
 
 ### Script Environment
 
@@ -175,7 +174,7 @@ The Hyperledger Fabric framework provides a set of scripts for basic network man
      style="float: left; margin-right: 10px;" />
 <p align="justify">
 
-<i>Source: Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.<i> <br>
+<i><b>Source:</b> Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.<i> <br>
 
 The documentation model consists of the following fields. <br>
 <b>Name:</b> The name of the script file.
