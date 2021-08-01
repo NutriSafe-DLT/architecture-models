@@ -19,7 +19,7 @@ The building blocks of the BCDM design pattern and the actual application of the
   * [Channel Topology](#Channel-Topology)
   * [Blockchain Operations Framework](#Blockchain-Operaions-Framework)
     + [Blockchain Operations Categories](#Blockchain-Operations-Categories)
-    + [Integrated Operational Process - "Onboarding an Organization"](#Integrated-Operational-Process-"Onboarding-an-Organization")
+    + [Integrated Operational Process - "Onboarding an Organization"](#Integrated-Operational-Process---"Onboarding-an-Organization")
     + [The Script Environment and Documentation Model](#The-Script-Environment-and-Documentation-Model)
 
 
@@ -182,6 +182,13 @@ In our scenario shown in Fig. 8, we instantiate two application channels: the fi
 We draw on our previous findings on designing and operating a blockchain-based solution with Hyperledger Fabric as a technical platform to review the blockchain-specific operational task and group them into seven categories (Fig. 9). These seven categories give the structure for building and operating a blockchain. For each category, we provide operational processes and scripts to support these as well as the off-chain coordination necessary for secure blockchain operation. All seven categories and the processes are instantiated within the blockchain-based information system of the previously introduced soft cheese supply chain scenario.
 </p>
 
+
+### Blockchain Operations Categories
+
+<p align="justify">
+<b>Blockchain Software Management.</b> This category includes operational processes of the blockchain software used to develop and change core algorithms running in the blockchain. For each blockchain network a basic set of rules and algorithms need to be developed. In most cases this protocol and its implementation are provided by open-source projects like Bitcoin, Ethereum or the Hyperledger project. Note that Hyperledger Fabric follows a “pluggable principle” where even core functionality of the protocol such as the consensus algorithm can be replaced. Such changes in core functionality need to be coordinated for a joint transition of the whole blockchain network to avoid forks or inconsistencies. The coordination of changes for joint transitions across all participants is part of this category. In NutriSafe, we decided to employ the RAFT algorithm since it provides crash fault tolerance. That is important as we strive to increase resilience in the network. The RAFT algorithm is suitable for our scenario since all participants can be trusted. Should the network expand to include untrusted participants, a transition of the consensus algorithm to a byzantine fault-tolerant algorithm as described in can become an option.
+</p>
+
 <p align="center">
      <img src="./pictures/blockchain_operations_categories.png"
      width="500"
@@ -193,12 +200,6 @@ We draw on our previous findings on designing and operating a blockchain-based s
 
 <i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
 </i><br>
-
-### Blockchain Operations Categories
-
-<p align="justify">
-<b>Blockchain Software Management.</b> This category includes operational processes of the blockchain software used to develop and change core algorithms running in the blockchain. For each blockchain network a basic set of rules and algorithms need to be developed. In most cases this protocol and its implementation are provided by open-source projects like Bitcoin, Ethereum or the Hyperledger project. Note that Hyperledger Fabric follows a “pluggable principle” where even core functionality of the protocol such as the consensus algorithm can be replaced. Such changes in core functionality need to be coordinated for a joint transition of the whole blockchain network to avoid forks or inconsistencies. The coordination of changes for joint transitions across all participants is part of this category. In NutriSafe, we decided to employ the RAFT algorithm since it provides crash fault tolerance. That is important as we strive to increase resilience in the network. The RAFT algorithm is suitable for our scenario since all participants can be trusted. Should the network expand to include untrusted participants, a transition of the consensus algorithm to a byzantine fault-tolerant algorithm as described in can become an option.
-</p>
 
 <p align="justify">
 <b>Identity Management.</b> This category includes all tasks related to IT-management of cryptographic material. This includes the management of certificates, i.e., creating or revoking certificates as operational activities. In blockchains, certificates and private keys are used for signing the transactions to ensure integrity, for transport layer encryption, and for managing access in permissioned blockchains. Operating a public key infrastructure and corresponding (intermediate) certificate authorities is a common task in current service operations. A blockchain integrated with business information system architecture relies on certificate management. Exchanging certificates securely is a core aspect of general network security. Certificate exchange is crucial to (1) ensuring transport layer encryption, (2) ensuring the integrity of the identities, and (3) managing access control to the network. The provided script as part of our research is named “createCryptoMaterial.sh” It is designed to ease the setup of the certificate infrastructure. A yaml configuration file for each organization is used as input. It utilizes the command-line tool provided by Hyperledger Fabric cryptogen to generate CA root certificates, TLS-CA root certificates, TLS, and identity certificates for each node in the organization, as well as identity certificates for one admin and one user per organization. Each certificate is provided with the corresponding private key.
