@@ -1,5 +1,28 @@
 # The NutriSafe Architecture
 
+<p align="justify">
+The design and implementation of a blockchain as an infrastructure for a supply chain with efficient tracking and tracing is a recurring software design problem. The design pattern "Blockchain Data Management (BCDM)" provides a meta-model, chaincode for data object management and a REST-API for integration in a supply chain infrastructure. The analysis is grounded in the experiences of the NutriSafe research project with its scenarios and its use of the Hyperledger Fabric framework as technical platform. 
+</p>
+<i>
+<b>Source:</b> Lamken, D., Wagner, T., Hoiss, T., Seidenfad., K., Hermann, A., Kus, M., & Lechner, U. (n.d.). Design patterns and framework for blockchain integration in supply chains. 2021 IEEE International Conference on Blockchain and Cryptocurrency (ICBC) 
+</i><br><br>
+<p align="justify">
+The building blocks of the BCDM design pattern and the actual application of them inside the architecture of NutriSafe are documented in this repository.
+</p>
+
+- [The NutriSafe Architecture](#The-NutriSafe-Architecture)
+  * [Business Architecture](#Business-Architecture)
+  * [Architecture Layers](#Architecture-Layers)
+  * [REST API](#REST-API)
+  * [MQTT API](#MQTT-API)
+  * [Meta Definition](#Meta-Definition)
+  * [Channel Topology](#Channel-Topology)
+  * [Blockchain Operations Framework](#Blockchain-Operaions-Framework)
+    + [Blockchain Operations Categories](#Blockchain-Operations-Categories)
+    + [Integrated Operational Process - "Onboarding an Organization"](#Integrated-Operational-Process-"Onboarding-an-Organization")
+    + [The Script Environment and Documentation Model](#The-Script-Environment-and-Documentation-Model)
+
+
 ## Business Architecture
 
 <p align="justify">
@@ -110,7 +133,7 @@ Our solution benefits from the combination of the generic structures of Sparkplu
 </p>
      
 
-## The Meta Definition
+## Meta Definition
 <p align="justify">
 The meta definition represents a data set of diverse product specifications. It enables to extend a product model in a running blockchain, whereas the REST API offers an interface and identity handling for client applications that intend to connect to the Hyperledger Fabric network. 
 The meta definition allows to manage a large and diverse number of different product representations in the blockchain. The meta definition is saved as one key-value pair on the ledger with the key predefined as METADEF. The meta definition contains a unitList, describing possible unit metrics for products, an attributeToDataTypeMap, which maps datatypes to attributes and a productNameToAttributesMap, which connects a list of attributes to a product type.  
