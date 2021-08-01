@@ -1,6 +1,6 @@
 # The NutriSafe Architecture
 
-### Business Architecture
+## Business Architecture
 
 <p align="justify">
 The community uses a stakeholder map shown in Fig. 1 and the NutriSafe infrastructure as the central element of the design. The community comprises many actors typical for any food supply chain and actors specific for the scenario of soft cheese production, namely dairy and milk truck.
@@ -24,7 +24,7 @@ The community uses a stakeholder map shown in Fig. 1 and the NutriSafe infrastru
 The supply chain depicted in Fig. 2 starts with the milk farm. The milk farm hands over the fresh milk to a milk truck, which transports milk to the dairy and takes a sample for quality checks. The dairy processes fresh milk to produce, e.g., soft cheese transported by a logistics service provider to a retailer. The end customer buys the product, the soft cheese, at a grocery store. We assume that all actors use the blockchain to share information concerning production and logistics. A core user story is the creation of traceable product history. The product history is, e.g., providing information to the end-customer or for efficient tracking and tracing in a food safety issue.
 </p>
 
-### Architecture Layers
+## Architecture Layers
 
 <p align="center">
 <img src="./pictures/actors_IS_DLT.png"
@@ -69,9 +69,13 @@ The technical architecture is structured in four layers, as depicted in Fig. 4.
 <b>The Administration Layer</b> contains the operational support and necessities for configuring and maintaining a Hyperledger Fabric network. The designed scripts for creating update transactions enable a fast way to expand the network. Configuration files are inherent by the blockchain framework and are customized for our scenario.
 </p>
 
-### APIs
+## REST API
 
-#### REST API
+<p align="justify">
+The REST API provides the interface for all web applications to the blockchain. Note that the first design iteration of NutriSafe utilizes a REST API for each organization.
+<br>
+The RESTful interface (cf. Fig. 5) provides a set of functions to enable the interaction with the NutriSafe Hyperledger Fabric network. To authenticate the transaction proposals to the blockchain network, the user's organization's certificate and the corresponding key have to be accessible for the REST API. Custom clients transfer username and password to receive a JSON Web Token (JWT) per session on the REST API. Since the REST API hosts its own user database, user management is also part of its feature set. Customizable whitelists define the function calls per user and are adjustable to chaincode updates.
+</p>
 
 <p align="center">
 <img src="./pictures/rest_api_component_model.png"
@@ -83,13 +87,7 @@ The technical architecture is structured in four layers, as depicted in Fig. 4.
     Fig. 5: The component model of the REST API
 </p>
 
-<p align="justify">
-The REST API provides the interface for all web applications to the blockchain. Note that the first design iteration of NutriSafe utilizes a REST API for each organization.
-<br>
-The RESTful interface (cf. Fig. 5) provides a set of functions to enable the interaction with the NutriSafe Hyperledger Fabric network. To authenticate the transaction proposals to the blockchain network, the user's organization's certificate and the corresponding key have to be accessible for the REST API. Custom clients transfer username and password to receive a JSON Web Token (JWT) per session on the REST API. Since the REST API hosts its own user database, user management is also part of its feature set. Customizable whitelists define the function calls per user and are adjustable to chaincode updates.
-</p>
-
-#### MQTT API
+## MQTT API
 
 <p align="justify">
 A setup with mechatronic components and an MES is depicted in Fig. 6. The MES is utilizing the REST API. The mechatronic components such as PLC and sensors are accessing our MQTT API, which consists of an MQTT broker and an MQTT-to-BC-Gateway. To increase interoperability, we propose all MQTT devices to be compliant with the Sparkplug B specification. <br>
@@ -112,7 +110,7 @@ Our solution benefits from the combination of the generic structures of Sparkplu
 </p>
      
 
-### The Meta Definition
+## The Meta Definition
 <p align="justify">
 The meta definition represents a data set of diverse product specifications. It enables to extend a product model in a running blockchain, whereas the REST API offers an interface and identity handling for client applications that intend to connect to the Hyperledger Fabric network. 
 The meta definition allows to manage a large and diverse number of different product representations in the blockchain. The meta definition is saved as one key-value pair on the ledger with the key predefined as METADEF. The meta definition contains a unitList, describing possible unit metrics for products, an attributeToDataTypeMap, which maps datatypes to attributes and a productNameToAttributesMap, which connects a list of attributes to a product type.  
@@ -133,7 +131,7 @@ The meta definition allows to manage a large and diverse number of different pro
 </i><br>
 
 
-### Channel Topology
+## Channel Topology
 
 <p align="justify">
 In Hyperledger Fabric, there are ordering nodes, endorsing, and committing peers. Ordering nodes are the central component that orders incoming transactions in blocks using the RAFT consensus algorithm. Endorsing peers have chaincode installed and are responsible for creating so-called Read-Write-Sets by executing the chaincode for a transaction proposal send by a client. After calculation, the result is sent back to the client without the transaction's commitment to the ledger. The Read-Write-Set is then sent to the ordering nodes for the transaction record and block creation.<br>
@@ -155,9 +153,7 @@ Channels organize the peers. Each channel has its chaincode deployed and contain
 In our scenario shown in Fig. 8, we instantiate two application channels: the first one provides a track-and-trace functionality for products of all kinds; the second one implements functions and data models for organizing shipments by a logistics network. In our scenario, one supply chain participant is part of both channels and, thus, sees all transactions. The construct of private data collections ensures confidentiality inside a channel. This allows sharing of information on a peer-to-peer basis without a recording of the data in the blockchain. To ensure private data integrity, a hash-value of the data is committed and stored in the blockchain. In general, the channel topology and private data collection structure depend on the consortium.
 </p>
 
-### Blockchain Operations Framework
-
-#### Blockchain Operations Categories
+## Blockchain Operations Framework
 
 <p align="justify">
 We draw on our previous findings on designing and operating a blockchain-based solution with Hyperledger Fabric as a technical platform to review the blockchain-specific operational task and group them into seven categories (Fig. 9). These seven categories give the structure for building and operating a blockchain. For each category, we provide operational processes and scripts to support these as well as the off-chain coordination necessary for secure blockchain operation. All seven categories and the processes are instantiated within the blockchain-based information system of the previously introduced soft cheese supply chain scenario.
@@ -175,6 +171,7 @@ We draw on our previous findings on designing and operating a blockchain-based s
 <i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
 </i><br>
 
+### Blockchain Operations Categories
 
 <p align="justify">
 <b>Blockchain Software Management.</b> This category includes operational processes of the blockchain software used to develop and change core algorithms running in the blockchain. For each blockchain network a basic set of rules and algorithms need to be developed. In most cases this protocol and its implementation are provided by open-source projects like Bitcoin, Ethereum or the Hyperledger project. Note that Hyperledger Fabric follows a “pluggable principle” where even core functionality of the protocol such as the consensus algorithm can be replaced. Such changes in core functionality need to be coordinated for a joint transition of the whole blockchain network to avoid forks or inconsistencies. The coordination of changes for joint transitions across all participants is part of this category. In NutriSafe, we decided to employ the RAFT algorithm since it provides crash fault tolerance. That is important as we strive to increase resilience in the network. The RAFT algorithm is suitable for our scenario since all participants can be trusted. Should the network expand to include untrusted participants, a transition of the consensus algorithm to a byzantine fault-tolerant algorithm as described in can become an option.
@@ -208,6 +205,8 @@ As the last step, one organization commits the chaincode activating it for the c
 <b>Blockchain Related Services.</b> This category collects blockchain-related services like interfaces or wallets. A challenge in our scenario was to interact with the blockchain from existing applications. Therefore, we developed a general- purpose REST-API which operates independent of the chaincode and provides an interface which can be used for all kind of applications. This single interface can be instantiated by each organization. The credentials are stored on the REST-API server, which acts as one client identity in the blockchain network. Other related services are submitting file hashes of off-chain documents for proof of existence or business intelligence services on blockchain data. These examples show that there are components which are not vital for the blockchain itself but still useful for a blockchain-based information system.
 </p>
 
+### Integrated Operational Process - "Onboarding an Organization"
+
 <p align="justify">
 This section presents an integrated operational process of a new organization joining an existing network channel. This process demonstrates the blockchain operations categories and their interplay and illustrates how a blockchain network’s consortium can annotate fine-grained responsibilities. We employ the process of onboarding a new employee in a corporate environment as a metaphor. This process includes human resources, corporate IT, financial accounting, and each of the departments has its subroutines. Our “departments” are the blockchain operations (Fig. 9). Note that this exemplary process involves five of seven blockchain operations categories.
 </p>
@@ -225,8 +224,8 @@ This section presents an integrated operational process of a new organization jo
 </i><br>
 
 <p align="justify">
-Fig. 10 depicts the process of joining an existing channel in a blockchain network with the steps:
-Step 0: An off-chain proposal for a new organization joining the application channel must be negotiated in the consortium. This is a blockchain-agnostic business process. <br>
+Fig. 10 depicts the process of joining an existing channel in a blockchain network with the steps: <br>
+<b>Step 0:</b> An off-chain proposal for a new organization joining the application channel must be negotiated in the consortium. This is a blockchain-agnostic business process. <br>
 <b>Step 1:</b> The joining organization creates certificates for its joining nodes and users. Those certificates need to be shared with the organization which is responsible for Step 2. Scripts from the Identity Management category are used in this step. The joining organization is responsible for this step. <br>
 <b>Step 2:</b> One organization already part of the application channel prepares the configuration transaction. The tasks of adding the joining organization to the member section of the application channel contains several Hyperledger specific subtasks: fetching the latest configuration from the channel, creating an updated one, signing the transaction and committing it. Technically any organization in the application channel can process these subtasks, but the business must clearly address this responsibility and answering questions like: Who is responsible for preparing the first proposal? Who needs to sign the transaction before the network will accept it? Who commits the updated signed transaction? These activities belong to the Governance category. <br>
 <b>Step 3:</b> In this step peers and world state databases of the joining organization are started. Addresses and certificates of the other nodes need to be known to configure the new peer. The operational task of configuring and starting peers and their databases belong to the Node Management category. This is step is carried out by the joining organization by utilizing configuration details of the network which must be shared off- chain. <br>
@@ -236,12 +235,10 @@ Note that the depicted process contains just five of seven blockchain operations
 The model shows the operation categories’ interplay in day-to-day tasks with their on-chain and off-chain processes. The seven operation categories require different skillsets, and most likely several people or departments will be responsible for them.
 </p>
 
-### Script Environment
+### The Script Environment and Documentation Model
 <p align="justify">
 The Hyperledger Fabric framework provides a set of scripts for basic network management operations by default. A toolchain for the generation, configuration, and administration of fabric-based networks is realized using the Hyperledger Fabric framework's client software. However, most of the administrative operations require long sequences of commands executed in a strict order. Scripting those operations is fundamental for efficient network deployment and operation. Therefor, we elaborated a compact sheet for documenting these scripts and all its environmental dependencies and implications.
 </p>
-
-#### The Documentation Model
 
 <img src="./pictures/empty_script.png"
      width="100%"
