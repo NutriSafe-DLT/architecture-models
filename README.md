@@ -7,7 +7,7 @@ The design and implementation of a blockchain as an infrastructure for a supply 
 <b>Source:</b> Lamken, D., Wagner, T., Hoiss, T., Seidenfad., K., Hermann, A., Kus, M., & Lechner, U. (n.d.). Design patterns and framework for blockchain integration in supply chains. 2021 IEEE International Conference on Blockchain and Cryptocurrency (ICBC) 
 </i><br><br>
 <p align="justify">
-The building blocks of the BCDM design pattern and the actual application of them inside the architecture of NutriSafe are documented in this repository.
+The building blocks served by the BCDM design pattern and the actual application of them inside the architecture of NutriSafe are documented in this repository.
 </p>
 
 - [The NutriSafe Architecture](#The-NutriSafe-Architecture)
@@ -18,8 +18,7 @@ The building blocks of the BCDM design pattern and the actual application of the
   * [Meta Definition](#Meta-Definition)
   * [Channel Topology](#Channel-Topology)
   * [Blockchain Operations Framework](#Blockchain-Operaions-Framework)
-    + [Blockchain Operations Categories](#Blockchain-Operations-Categories)
-    + [Integrated Operational Process - "Onboarding an Organization"](#Integrated-Operational-Process---"Onboarding-an-Organization")
+    + [Integrated Operational Process](#Integrated-Operational-Process)
     + [The Script Environment and Documentation Model](#The-Script-Environment-and-Documentation-Model)
 
 
@@ -128,8 +127,19 @@ Since MQTT is offering a large flexibility for topic naming and payload encoding
 </i><br><br>
 
 <p align="justify">
-The concept shown in Fig. 6 utilizes two generic structures (cf. Fig. XXX and Fig. XXX) as follows: The MES is aware of the machines' running jobs and knows the Sparkplug compliant namespace of each involved device. Each time a new job is finished, the MES adds the namespace of the active machine to the product-lot as a new attribute. Since the new lot is timestamped and contains a unique namespace, we can now query the ledger of the production machine precisely by the tuple of topic-domain and timestamp. Each device has its own ledger, and each ledger can be concatenated from top to down. I.e., a machine has its own ledger, which is referring to the ledgers of its subcomponents.
-Our solution benefits from the combination of the generic structures of Sparkplug and the NutriSafe Meta Model. The flexible data model of NutriSafe (cf. Fig. 7) enables to address the full bandwidth of products in the food industry. Annotating predecessor and successor to each product-lot empowers, e.g., authorities to make a forward and backward tracing on the supply chain data. Within specific tracing cases, it is necessary to query data about the OT-environment which was involved in the production process. Here Sparkplug comes into play. The semantic granularity ranges from production lines, over single machines and down to components such as actuators or sensors. Furthermore, industrial environments are shaped by patchworks of modern and also historically grown legacy infrastructures. Here our current data model faces limitations because it does not offer a means to integrate these infrastructural data.
+The concept shown in Fig. 6 utilizes two generic structures (cf. Fig. 7 and Fig. 8) as follows: The MES is aware of the machines' running jobs and knows the Sparkplug compliant namespace of each involved device. Each time a new job is finished, the MES adds the namespace of the active machine to the product-lot as a new attribute. Since the new lot is timestamped and contains a unique namespace, we can now query the ledger of the production machine precisely by the tuple of topic-domain and timestamp. Each device has its own ledger, and each ledger can be concatenated from top to down. I.e., a machine has its own ledger, which is referring to the ledgers of its subcomponents.<br>
+
+<p align="center">
+<img src="./pictures/sparkplug_namespace.png"
+     width="100%"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" /> 
+     <br>
+    Fig. 7: Template for a Sparkplug B compliant topic namespace
+</p>
+<i><b>Source:</b> ECLIPSE Foundation: Sparkplug Specification Rev 2.2, https://www.eclipse.org/tahu/spec/Sparkplug Topic Namespace and State ManagementV2.2-with appendix B format - Eclipse.pdf, last accessed 2021/01/11.</i><br><br>
+
+Our solution benefits from the combination of the generic structures of Sparkplug and the NutriSafe Meta Model. The flexible data model of NutriSafe (cf. Fig. 8) enables to address the full bandwidth of products in the food industry. Annotating predecessor and successor to each product-lot empowers, e.g., authorities to make a forward and backward tracing on the supply chain data. Within specific tracing cases, it is necessary to query data about the OT-environment which was involved in the production process. Here Sparkplug comes into play. The semantic granularity ranges from production lines, over single machines and down to components such as actuators or sensors. Furthermore, industrial environments are shaped by patchworks of modern and also historically grown legacy infrastructures. Here our current data model faces limitations because it does not offer a means to integrate these infrastructural data.
 </p>
      
 
@@ -146,7 +156,7 @@ The meta definition allows to manage a large and diverse number of different pro
      style="float: left; margin-right: 10px;" /> 
   
   <br>
-    Fig. 7: The meta definition
+    Fig. 8: The meta definition
 </p>
 
 <i>
@@ -166,24 +176,21 @@ Channels organize the peers. Each channel has its chaincode deployed and contain
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
      <br>
-     Fig. 8: The channel topology for the NutriSafe softcheese szenario
+     Fig. 9: The channel topology for the NutriSafe softcheese szenario
 </p>
 
 <i><b>Source:</b> Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.</i><br>
 
 
 <p align="justify">
-In our scenario shown in Fig. 8, we instantiate two application channels: the first one provides a track-and-trace functionality for products of all kinds; the second one implements functions and data models for organizing shipments by a logistics network. In our scenario, one supply chain participant is part of both channels and, thus, sees all transactions. The construct of private data collections ensures confidentiality inside a channel. This allows sharing of information on a peer-to-peer basis without a recording of the data in the blockchain. To ensure private data integrity, a hash-value of the data is committed and stored in the blockchain. In general, the channel topology and private data collection structure depend on the consortium.
+In our scenario shown in Fig. 9, we instantiate two application channels: the first one provides a track-and-trace functionality for products of all kinds; the second one implements functions and data models for organizing shipments by a logistics network. In our scenario, one supply chain participant is part of both channels and, thus, sees all transactions. The construct of private data collections ensures confidentiality inside a channel. This allows sharing of information on a peer-to-peer basis without a recording of the data in the blockchain. To ensure private data integrity, a hash-value of the data is committed and stored in the blockchain. In general, the channel topology and private data collection structure depend on the consortium.
 </p>
 
 ## Blockchain Operations Framework
 
 <p align="justify">
-We draw on our previous findings on designing and operating a blockchain-based solution with Hyperledger Fabric as a technical platform to review the blockchain-specific operational task and group them into seven categories (Fig. 9). These seven categories give the structure for building and operating a blockchain. For each category, we provide operational processes and scripts to support these as well as the off-chain coordination necessary for secure blockchain operation. All seven categories and the processes are instantiated within the blockchain-based information system of the previously introduced soft cheese supply chain scenario.
+We draw on our previous findings on designing and operating a blockchain-based solution with Hyperledger Fabric as a technical platform to review the blockchain-specific operational task and group them into seven categories (Fig. 10). These seven categories give the structure for building and operating a blockchain. For each category, we provide operational processes and scripts to support these as well as the off-chain coordination necessary for secure blockchain operation. All seven categories and the processes are instantiated within the blockchain-based information system of the previously introduced soft cheese supply chain scenario.
 </p>
-
-
-### Blockchain Operations Categories
 
 <p align="justify">
 <b>Blockchain Software Management.</b> This category includes operational processes of the blockchain software used to develop and change core algorithms running in the blockchain. For each blockchain network a basic set of rules and algorithms need to be developed. In most cases this protocol and its implementation are provided by open-source projects like Bitcoin, Ethereum or the Hyperledger project. Note that Hyperledger Fabric follows a “pluggable principle” where even core functionality of the protocol such as the consensus algorithm can be replaced. Such changes in core functionality need to be coordinated for a joint transition of the whole blockchain network to avoid forks or inconsistencies. The coordination of changes for joint transitions across all participants is part of this category. In NutriSafe, we decided to employ the RAFT algorithm since it provides crash fault tolerance. That is important as we strive to increase resilience in the network. The RAFT algorithm is suitable for our scenario since all participants can be trusted. Should the network expand to include untrusted participants, a transition of the consensus algorithm to a byzantine fault-tolerant algorithm as described in can become an option.
@@ -195,7 +202,7 @@ We draw on our previous findings on designing and operating a blockchain-based s
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
      <br>
-     Fig. 9: The blockchain operations categories
+     Fig. 10: The blockchain operations categories
 </p>
 
 <i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
@@ -229,10 +236,10 @@ As the last step, one organization commits the chaincode activating it for the c
 <b>Blockchain Related Services.</b> This category collects blockchain-related services like interfaces or wallets. A challenge in our scenario was to interact with the blockchain from existing applications. Therefore, we developed a general- purpose REST-API which operates independent of the chaincode and provides an interface which can be used for all kind of applications. This single interface can be instantiated by each organization. The credentials are stored on the REST-API server, which acts as one client identity in the blockchain network. Other related services are submitting file hashes of off-chain documents for proof of existence or business intelligence services on blockchain data. These examples show that there are components which are not vital for the blockchain itself but still useful for a blockchain-based information system.
 </p>
 
-### Integrated Operational Process - "Onboarding an Organization"
+### Integrated Operational Process
 
 <p align="justify">
-This section presents an integrated operational process of a new organization joining an existing network channel. This process demonstrates the blockchain operations categories and their interplay and illustrates how a blockchain network’s consortium can annotate fine-grained responsibilities. We employ the process of onboarding a new employee in a corporate environment as a metaphor. This process includes human resources, corporate IT, financial accounting, and each of the departments has its subroutines. Our “departments” are the blockchain operations (Fig. 9). Note that this exemplary process involves five of seven blockchain operations categories.
+This section presents an integrated operational process of a new organization joining an existing network channel. This process demonstrates the blockchain operations categories and their interplay and illustrates how a blockchain network’s consortium can annotate fine-grained responsibilities. We employ the process of onboarding a new employee in a corporate environment as a metaphor. This process includes human resources, corporate IT, financial accounting, and each of the departments has its subroutines. Our “departments” are the blockchain operations (Fig. 10). Note that this exemplary process involves five of seven blockchain operations categories.
 </p>
 
 <p align="center">
@@ -241,14 +248,14 @@ This section presents an integrated operational process of a new organization jo
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" /> 
      <br>
-     Fig. 10: The step-by-step process of onboarding a new organization with the corresponding blockchain operations categories
+     Fig. 11: The step-by-step process of onboarding a new organization with the corresponding blockchain operations categories
 </p>
 
 <i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
 </i><br>
 
 <p align="justify">
-Fig. 10 depicts the process of joining an existing channel in a blockchain network with the steps: <br>
+Fig. 11 depicts the process of joining an existing channel in a blockchain network with the steps: <br>
 <b>Step 0:</b> An off-chain proposal for a new organization joining the application channel must be negotiated in the consortium. This is a blockchain-agnostic business process. <br>
 <b>Step 1:</b> The joining organization creates certificates for its joining nodes and users. Those certificates need to be shared with the organization which is responsible for Step 2. Scripts from the Identity Management category are used in this step. The joining organization is responsible for this step. <br>
 <b>Step 2:</b> One organization already part of the application channel prepares the configuration transaction. The tasks of adding the joining organization to the member section of the application channel contains several Hyperledger specific subtasks: fetching the latest configuration from the channel, creating an updated one, signing the transaction and committing it. Technically any organization in the application channel can process these subtasks, but the business must clearly address this responsibility and answering questions like: Who is responsible for preparing the first proposal? Who needs to sign the transaction before the network will accept it? Who commits the updated signed transaction? These activities belong to the Governance category. <br>
@@ -269,7 +276,7 @@ The Hyperledger Fabric framework provides a set of scripts for basic network man
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
 
-Fig. 11: The template for documenting a new script operation, which was developed inside the NutriSafe project
+Fig. 12: The template for documenting a new script operation, which was developed inside the NutriSafe project
 
 <i><b>Source:</b> Seidenfad, K., Hoiss, T., & Lechner, U. (2021). A blockchain to bridge business information systems and industrial automation environments in supply chains. In G. Krieger, U.R., Eichler, G., Erfurth, C., Fahrnberger (Ed.), 21st International Conference on Innovations for Community Services. Springer.</i> <br>
 
