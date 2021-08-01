@@ -172,6 +172,10 @@ We draw on our previous findings on designing and operating a blockchain-based s
      Fig. 9: The blockchain operations categories
 </p>
 
+<i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
+</i><br>
+
+
 <p align="justify">
 <b>Blockchain Software Management.</b> This category includes operational processes of the blockchain software used to develop and change core algorithms running in the blockchain. For each blockchain network a basic set of rules and algorithms need to be developed. In most cases this protocol and its implementation are provided by open-source projects like Bitcoin, Ethereum or the Hyperledger project. Note that Hyperledger Fabric follows a “pluggable principle” where even core functionality of the protocol such as the consensus algorithm can be replaced. Such changes in core functionality need to be coordinated for a joint transition of the whole blockchain network to avoid forks or inconsistencies. The coordination of changes for joint transitions across all participants is part of this category. In NutriSafe, we decided to employ the RAFT algorithm since it provides crash fault tolerance. That is important as we strive to increase resilience in the network. The RAFT algorithm is suitable for our scenario since all participants can be trusted. Should the network expand to include untrusted participants, a transition of the consensus algorithm to a byzantine fault-tolerant algorithm as described in can become an option.
 </p>
@@ -204,9 +208,9 @@ As the last step, one organization commits the chaincode activating it for the c
 <b>Blockchain Related Services.</b> This category collects blockchain-related services like interfaces or wallets. A challenge in our scenario was to interact with the blockchain from existing applications. Therefore, we developed a general- purpose REST-API which operates independent of the chaincode and provides an interface which can be used for all kind of applications. This single interface can be instantiated by each organization. The credentials are stored on the REST-API server, which acts as one client identity in the blockchain network. Other related services are submitting file hashes of off-chain documents for proof of existence or business intelligence services on blockchain data. These examples show that there are components which are not vital for the blockchain itself but still useful for a blockchain-based information system.
 </p>
 
-
-<i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
-</i><br>
+<p align="justify">
+This section presents an integrated operational process of a new organization joining an existing network channel. This process demonstrates the blockchain operations categories and their interplay and illustrates how a blockchain network’s consortium can annotate fine-grained responsibilities. We employ the process of onboarding a new employee in a corporate environment as a metaphor. This process includes human resources, corporate IT, financial accounting, and each of the departments has its subroutines. Our “departments” are the blockchain operations (Fig. 9). Note that this exemplary process involves five of seven blockchain operations categories.
+</p>
 
 <p align="center">
      <img src="./pictures/onboarding_a_new_org.png"
@@ -219,6 +223,18 @@ As the last step, one organization commits the chaincode activating it for the c
 
 <i><b>Source:</b> Hoiss, T., Seidenfad, K. & Lechner, U. (2021). Blockchain Service Operations – A Structured Approach to Operate a Blockchain Solution. To be appear in IEEE DAPPS 2021
 </i><br>
+
+<p align="justify">
+Fig. 10 depicts the process of joining an existing channel in a blockchain network with the steps:
+Step 0: An off-chain proposal for a new organization joining the application channel must be negotiated in the consortium. This is a blockchain-agnostic business process. <br>
+<b>Step 1:</b> The joining organization creates certificates for its joining nodes and users. Those certificates need to be shared with the organization which is responsible for Step 2. Scripts from the Identity Management category are used in this step. The joining organization is responsible for this step. <br>
+<b>Step 2:</b> One organization already part of the application channel prepares the configuration transaction. The tasks of adding the joining organization to the member section of the application channel contains several Hyperledger specific subtasks: fetching the latest configuration from the channel, creating an updated one, signing the transaction and committing it. Technically any organization in the application channel can process these subtasks, but the business must clearly address this responsibility and answering questions like: Who is responsible for preparing the first proposal? Who needs to sign the transaction before the network will accept it? Who commits the updated signed transaction? These activities belong to the Governance category. <br>
+<b>Step 3:</b> In this step peers and world state databases of the joining organization are started. Addresses and certificates of the other nodes need to be known to configure the new peer. The operational task of configuring and starting peers and their databases belong to the Node Management category. This is step is carried out by the joining organization by utilizing configuration details of the network which must be shared off- chain. <br>
+<b>Step 4:</b> The newly started peer fetches the updated channel configuration. For this to happen the address and certificate of one ordering node need to be available. If the transaction proposal of Step 2 was submitted successfully, the new peer would now be able to join the desired application channel. The network and channel connection are managed in the Node Network Management category. The tasks are carried out by the joining organization since the joining organization was already accepted as a new member of the channel in Step 2. <br>
+<b>Step 5:</b> The peer installs the chaincode for the joined application channel and approves it. Developing, maintaining, and distributing chaincode as an off-chain processes belongs to the category Smart Contract Management. All peers need to install the same business logic in the chaincode which needs consensual distributed software development. <br>
+Note that the depicted process contains just five of seven blockchain operations categories. It does not contain Blockchain Protocol Management because changes at the protocol level are typically not done in the onboarding process. Essential rules of establishing consensus are usually changed when adding new organizations e.g. changes in the transaction endorsing policies. We also assume in the exemplified process that Blockchain Related Services are not necessary since they address blockchain external processes.<br>
+The model shows the operation categories’ interplay in day-to-day tasks with their on-chain and off-chain processes. The seven operation categories require different skillsets, and most likely several people or departments will be responsible for them.
+</p>
 
 ### Script Environment
 <p align="justify">
